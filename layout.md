@@ -1,4 +1,3 @@
-AMI diagram.md
 abstract.md
 background.md
 overview.md
