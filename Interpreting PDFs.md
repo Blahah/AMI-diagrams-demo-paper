@@ -1,5 +1,5 @@
 PDFs provide three streams:
-
+ 
 1. characters with code points or their glyphs
 2. paths (lines and curves)
 3. pixel images
