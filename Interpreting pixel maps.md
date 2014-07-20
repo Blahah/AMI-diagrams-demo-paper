@@ -1,5 +1,5 @@
 ## **Interpreting pixel maps**
-We have tried many methods including Hough line transforms, erosion (BoofCV), histogram equalisation. The following are those that work best for scientific articles.
+We have tried many methods including Hough line transforms, erosion (BoofCV), histogram equalisation. The following are the problems and approaches that we have found most appropriate for modern scientific articles. We warn that artciles before ca. 2000 may have poor typography, less systematic presention and this make it harder to create simple heuritics.
 
  1. **Colours**. Binary (black and white only) are simplest; gradients and dotted regions can cause problems. AMI separates colours into complementary pixel maps and can process each separately. Recombination is at the domain level (e.g. differently coloured subtrees)
  2. **Noise** (common in scanned documents), grayscales and antialiasing (very common) mean that background / threshold levels are sometimes critical. AMI can adjust these either from human control or a simple adaptive optimisation. 
