@@ -1,4 +1,4 @@
-abstract.md
+Abstract.md
 background.md
 overview.md
 Interpreting pixel maps.md
