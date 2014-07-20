@@ -4,4 +4,5 @@ background.md
 overview.md
 Interpreting pixel maps.md
 Reconstructing Objects.md
+Current Status.md
 figures/pone.0036933.g001/pone.0036933.g001.png
