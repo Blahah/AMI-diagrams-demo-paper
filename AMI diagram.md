@@ -1,8 +1,5 @@
 ### **AMI-diagram: Mining Facts from Images**
 
-# Peter Murray-Rust
-# _University of Cambridge_
-
 ## **Abstract**
 There are at least 10 million diagrams published in the scientific literature each year and many of them represent factual information. AMI-diagramanalyzer is a flexible tool which can mine facts from diagrams and convert the data into XML. The targets include X-Y plots, barcharts, chemical structure diagrams and phylogenetic trees. AMI can ingest born-digital diagrams either as latent vectors (converted from Postscript), pixel diagrams (PNGs and JPEgs) or scanned documents. For high-quality/resolution diagrams the process is automatic; commandline parameters can be used for noisy or complex diagrams. 
 
@@ -43,4 +40,6 @@ Many segmented objects are suitable for domain-specific interpretation.
 ## **Current status**
 AMI is Open-source (Apache2) in pure Java. It can be deployed as a command-line option including recursion over directories and ingestion of web streams. It ingests PDF, SVG, XML, HTML and image formats and usually takes < 1 second per image (some documents include tens of such). 
 
+## **Acknowledgements**
+PM-R thanks The Shuttleworth Foundation for a Fellowship and Grant and RM thanks BBSRC for support for the PLUTo project
 
