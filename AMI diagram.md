@@ -1,4 +1,4 @@
-# **AMI-diagram: Mining Facts from Images**
+### **AMI-diagram: Mining Facts from Images**
 
 ## **Abstract**
 There are at least 10 million diagrams published in the scientific literature each year and many of them represent factual information. AMI-diagramanalyzer is a flexible tool which can mine facts from diagrams and convert the data into XML. The targets include X-Y plots, barcharts, chemical structure diagrams and phylogenetic trees. AMI can ingest born-digital diagrams either as latent vectors (converted from Postscript), pixel diagrams (PNGs and JPEgs) or scanned documents. For high-quality/resolution diagrams the process is automatic; commandline parameters can be used for noisy or complex diagrams. 
@@ -30,9 +30,9 @@ Factors which lead to success include:
 
 ## **Reconstructing objects**
 Many segmented objects are suitable for domain-specific interpretation. 
- 1.  Chemical structures are lines and characters, with occasional circles; we often approach 100% Recall/Precison for vector or good pixel diagrams. 
- 2.  Phylogenetic trees are often tractable, consisting of a single connected trees with labels close to the tip. We can process rooted trees (orthogonal and circular) and unrooted and for simple diagrams precision is often 100%
- 3.  X-y plots. These are often very tractable - again with high precision; they contain
+ 1.  **Chemical structures** are lines and characters, with occasional circles; we often approach 100% Recall/Precison for vector or good pixel diagrams. 
+ 2.  **Phylogenetic trees** are often tractable, consisting of a single connected trees with labels close to the tip. We can process rooted trees (orthogonal and circular) and unrooted and for simple diagrams precision is often 100%. The diagram below is converted to the semantic Newick string: ((n122,((n121,n205),((n39,(n84, [... clipped ...] ((n53,n131),n159))))))); See http://blogs.ch.cam.ac.uk/pmr/2014/06/25/content-mining-we-can-now-mine-images-of-phylogenetic-trees-and-more/
+ 3.  **X-y plots**. These are often very tractable - again with high precision; they contain
   a. X- and / or Y- axes each consisting of lines with tick marks, scales, quantities and units
   b. symbols or points, perhaps with error bars and legands for each type
   c. an overall title
