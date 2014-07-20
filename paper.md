@@ -11,7 +11,7 @@ author:
 
 ## **Introduction**
 
-There are at least 10 million diagrams published in the scientific literature each year and many of them represent factual information. AMI-Diagram is a flexible tool which can mine facts from diagrams and convert the graphics primitives into XML. The targets include X-Y plots, barcharts, chemical structure diagrams and phylogenetic trees. AMI can ingest born-digital diagrams either as latent vectors (converted from Postscript), pixel diagrams (PNGs and JPEgs) or scanned documents. For high-quality/resolution diagrams the process is automatic; commandline parameters can be used for noisy or complex diagrams. AMI is part of the ContentMine framework (contentmine.org) for automatically extracting science from the published literature
+There are at least 10 million diagrams published in the scientific literature each year and many of them represent factual information. AMI-Diagram is a flexible tool which can mine facts from diagrams and convert the graphics primitives into XML. The targets include X-Y plots, barcharts, chemical structure diagrams and phylogenetic trees. AMI can ingest born-digital diagrams either as latent vectors (converted from Postscript), pixel diagrams (PNGs and JPEGs) or scanned documents. For high-quality/resolution diagrams the process is automatic; commandline parameters can be used for noisy or complex diagrams. AMI is part of the ContentMine framework (contentmine.org) for automatically extracting science from the published literature
 
 ## **Background**
 
@@ -21,7 +21,7 @@ Since most scientific data is never published (estimates are often > 80% loss), 
 
 ## **Overview**
 
-Converting a semantic object to vector or pixel graphics loses most of the information. However in some domains it is possible to combine computer vision technqiues with machine-learning or rules/heuristics to recover the likely generating object. Moreover, ambiguity can often be resolved by lookup against public semantic data (e.g. dbpedia.org) or recomputing the object. We have therefore developed image and vector processing technology which can reconstruct semantic data from a wide range of diagrams. Users may start with PDF documents, PNG or JPEG diagrams, or other sources of vectors (Word or Powerpoint EWF, PostScript, etc.). AMI is a work-in-progress being deployed to alpha-testers especially in chemistry and phylogenetics.
+Converting a semantic object to vector or pixel graphics loses most of the information. However in some domains it is possible to combine computer vision techniques with machine-learning or rules/heuristics to recover the likely generating object. Moreover, ambiguity can often be resolved by lookup against public semantic data (e.g. dbpedia.org) or recomputing the object. We have therefore developed image and vector processing technology which can reconstruct semantic data from a wide range of diagrams. Users may start with PDF documents, PNG or JPEG diagrams, or other sources of vectors (Word or Powerpoint EWF, PostScript, etc.). AMI is a work-in-progress being deployed to alpha-testers especially in chemistry and phylogenetics.
 
 The overall process is:
 
@@ -45,14 +45,14 @@ We use PDFBox from Apache (pdfbox.org) which provides these, but most STM publis
 
 ## **Interpreting pixel maps**
 
-We have tried many methods including Hough line transforms, erosion (e.g BoofCV), and histogram equalisation. The following are the problems and approaches that we have found most appropriate for modern scientific articles. We warn that articles before ca. 2000 may have poor typography with less systematic presention, and this makes it harder to create simple heuristics.
+We have tried many methods including Hough line transforms, erosion (e.g BoofCV), and histogram equalisation. The following are the problems and approaches that we have found most appropriate for modern scientific articles. We warn that articles before ca. 2000 may have poor typography with less systematic presentation, and this makes it harder to create simple heuristics.
 
  1. **Colours**. Binary (black and white only) are simplest; gradients and dotted regions can cause problems. AMI separates colours into complementary pixel maps and can process each separately. Recombination is at the domain level (e.g. differently coloured subtrees).
  2. **Noise** (common in scanned documents), grayscales and antialiasing (very common) mean that background / threshold levels are sometimes critical. AMI can adjust these either from human control or a simple adaptive optimisation.
- 3. **Bleeding and cavitation**. Graphics primitives which are close often "bleed" into a single object; faint primitives may have holes. Where glyphs interbleed we separate them heuristically (by comparion with target gylphs)
+ 3. **Bleeding and cavitation**. Graphics primitives which are close often "bleed" into a single object; faint primitives may have holes. Where glyphs interbleed we separate them heuristically (by comparion with target glyphs)
  4. **Thinning**. AMI reduces lines and strokes to single pixel width using the Zhang-Suen approach and then tidies some redundant pixels.
  5. **Character recognition** (OCR). Traditional OCR methods (machine learning, correlations, moments and Mahalanobis) don't work well with scientific characters which are often rotated, isolated, have variable fonts, italic and/or bold and cover a wide range of Unicode (maths, Greek, symbols). We have developed a topological approach which is robust to distortion and scaling and can be combined with classical methods (bitwise correlation).
- 6. **Separation of objects**. We identify objects by floodfill or by expanding borders. Overlap of different colours is often tractable especially where these are primitives (lines, circles); we can sometimes resolve overlapping objects by creatng a dictionary of primitives (e.g. symbols).
+ 6. **Separation of objects**. We identify objects by floodfill or by expanding borders. Overlap of different colours is often tractable especially where these are primitives (lines, circles); we can sometimes resolve overlapping objects by creating a dictionary of primitives (e.g. symbols).
  7. **Segmentation**. PDFs and pixels do not support higher level primitives and AMI uses Douglas-Peuckert segmentation to approximate curved strokes, where possible trying to fit them to circles.
 
 ## **Reconstructing objects**
@@ -63,10 +63,10 @@ Many segmented objects are suitable for domain-specific interpretation. For exam
  2. **Phylogenetic trees** are often tractable, consisting of a single connected trees with labels close to the tip. We can process both rooted (orthogonal and circular, e.g. figure 1b) and unrooted trees. For simple diagrams precision is often 100%.
  3. **X-y plots**. These are often very tractable (e.g. figure 1c) - again with high precision; they contain:
   *  X- and/or Y- axes each consisting of lines with tick marks, scales, quantities and units
-  *  symbols or points, perhaps with error bars and legands for each type
+  *  symbols or points, perhaps with error bars and legends for each type
   *  an overall title
 
-![**A.)** A photograph of a chemical molecule on a poster taken with a mobile phone camera. This shows varying backgrounds, line broadening and skewing. In spite of this it is automatically and accurately converted to a semantic molecule with formula C18 H18 N3 O in under a second. **B.)** Ths circular tree is separated from its characters and correctly converted to the semantic Newick representation (image from DOI: 10.1371/journal.pone.0036933, figure 1). **C.)** This X-Y plot is correctly decomposed into X and Y coordinates of data points and size of the corresponding error bars (image from DOI: 10.1371/journal.pone.0095565, figure 2). It is possible to create a CSV file directly from this.](./figures/ami-diagram_figure1/ami-diagram_figure1.png)
+![**A.)** A photograph of a chemical molecule on a poster taken with a mobile phone camera, showing varying backgrounds, line broadening and skewing. In spite of this it is automatically and accurately converted to a semantic molecule with formula C18 H18 N3 O in under a second. **B.)** This circular tree is separated from its characters and correctly converted to the semantic Newick representation (image from DOI: 10.1371/journal.pone.0036933, figure 1). **C.)** This X-Y plot is correctly decomposed into X and Y coordinates of data points and size of the corresponding error bars (image from DOI: 10.1371/journal.pone.0095565, figure 2). It is possible to create a CSV file directly from this.](./figures/ami-diagram_figure1/ami-diagram_figure1.png)
 
 ## **Current status**
 
