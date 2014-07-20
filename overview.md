@@ -1,4 +1,4 @@
-## Overview
+## **Overview**
 We have developed image and vector processing technology which can reconstruct semantic data from a wide range of diagrams. Users may start with PDF documents, PNG or JPEG diagrams, or other sources of vectors (Word or Powerpoint EWF, Postscript, etc.). AMI is a work-in-progress being deployed to alpha-testers especially in chemistry and phylogentics. The overall process is:
 
  * dissect and restructure PDFs and extract images.
