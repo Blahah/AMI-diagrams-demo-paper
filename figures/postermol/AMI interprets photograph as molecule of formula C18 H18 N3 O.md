@@ -1,0 +1,1 @@
+The image is automatically backgrounded, binarized , thinned, and subjected to OCR. This is segmented and interpreted as a chemical formula.
