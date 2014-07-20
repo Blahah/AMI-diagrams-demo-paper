@@ -4,6 +4,5 @@ overview.md
 Interpreting pixel maps.md
 Reconstructing Objects.md
 figures/pone.0036933.g1/pone.0036933.g1.png
-figures/pone.0036933.g001/pone.0036933.g001.png
 Current Status.md
 Acknowledgements.md
