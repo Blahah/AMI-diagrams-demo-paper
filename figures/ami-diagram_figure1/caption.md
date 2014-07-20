@@ -1,1 +1,1 @@
-Replace this text with your caption
+A.) A photograph of a chemical molecule on a poster taken with a mobile phone camera. This shows varying backgrounds, line broadening and skewing. In spite of this it is automatically and accurately converted to a semantic molecule with formula C18 H18 N3 O in under a second.
