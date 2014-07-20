@@ -1,1 +1,1 @@
-AMI-diagram.md
+AMI diagram.md
