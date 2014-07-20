@@ -1,1 +1,1 @@
-### **AMI-diagram: Mining Facts from Images**
+# **AMI-diagram: Mining Facts from Images**
