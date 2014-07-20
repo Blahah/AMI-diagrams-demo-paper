@@ -1,7 +1,7 @@
 ## **Reconstructing objects**
 Many segmented objects are suitable for domain-specific interpretation. For example:
 
- 1. **Chemical structures** are lines and characters, with occasional circles; we often approach 100% Recall/Precision for vector or good pixel diagrams. We have successfully converted thousands of molecules, with annotations, and also chemical reactions into Chemical Markup Language (figure 1a).
+ 1. **Chemical structures** are lines and characters, with occasional circles; we often approach 100% Recall/Precision for vector or good pixel diagrams. We have successfully converted thousands of molecules, with annotations, and also chemical reactions into Chemical Markup Language. Figure 1A shows a noisy photograph which we have converted automatically to 1-pixel lines, segmants and thence to a semantic molecule C18 H18 N3 O.
  2. **Phylogenetic trees** are often tractable, consisting of a single connected trees with labels close to the tip. We can process both rooted (orthogonal and circular, figure 1b) and unrooted trees. For simple diagrams precision is often 100%. 
  3. **X-y plots**. These are often very tractable (figure 1c) - again with high precision; they contain:
  
