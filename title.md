@@ -1,1 +1,1 @@
-Double click to edit the title
+AMI-diagram: Mining Facts from Images
