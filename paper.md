@@ -6,7 +6,7 @@ author:
 - name: Richard Smith-Unna
   affiliation: University of Cambridge
 - name: Ross Mounce
-  affiliation: Univerity of Bath
+  affiliation: University of Bath
 ---  
 
 ## **Introduction**
@@ -15,9 +15,9 @@ There are at least 10 million diagrams published in the scientific literature ea
 
 ## **Background**
 
-Over 1 million scientific articles are published yearly and a similar amount of theses and grey literature. Many contain diagrams, such as graphs or domain-specific objects, representing factual information and often this is the primary way of communicating the information contained (e.g. molecular structure diagrams). Almost all diagrams are now born digital (i.e. the output is written directly from a program to file). The originating programs include generic plotting packages (GNUPlot, R, Excel), specialist editors such as JChempaint or Chemdraw for molecules, or are generated directly from instruments (e.g. spectra). The plots are usually high resolution, either scalable vectors + text (such as SVG or Postscript derivatives) or large pixel maps, often between 1 million and 20 million pixels.
+Over 1 million scientific articles are published yearly and a similar amount of theses and grey literature [@chalmers_avoidable_2009]. Many contain diagrams, such as graphs or domain-specific objects, representing factual information and often this is the primary way of communicating the information contained (e.g. molecular structure diagrams). Almost all diagrams are now born digital (i.e. the output is written directly from a program to file). The originating programs include generic plotting packages (GNUPlot, R, Excel), specialist editors such as JChempaint or Chemdraw for molecules, or are generated directly from instruments (e.g. spectra). The plots are usually high resolution, either scalable vectors + text (such as SVG or Postscript derivatives) or large pixel maps, often between 1 million and 20 million pixels.
 
-Since most scientific data is never published (estimates are often > 80% loss), extraction of data from images can be a vital source of semantic data. Traditional, labour intensive approaches include pencil and ruler, or cutting out peaks and weighing the paper and these are still, unfortunately, used today. Authors are reluctant to save data publicly; the Treebase database (http://treebase.org/treebase-web/home.html) of phylogenetic trees only contains 4% of published trees.
+Since most scientific data is never published (estimates are often > 80% loss;  @glasziou_role_2014), extraction of data from images can be a vital source of semantic data. Traditional, labour intensive approaches include pencil and ruler, or cutting out peaks and weighing the paper and these are still, unfortunately, used today. Authors are reluctant to save data publicly; the Treebase database (http://treebase.org/treebase-web/home.html) of phylogenetic trees only contains 4% of published trees.
 
 ## **Overview**
 
@@ -35,11 +35,7 @@ There is often an advantage in knowing the style of a journal or generating prog
 
 ## **Interpreting PDFs**
 
-PDFs provide three streams:
-
-1. characters with code points or their glyphs
-2. paths (lines and curves)
-3. pixel images
+PDFs are made up of three streams: characters with code points or their glyphs;  paths (lines and curves); and pixel images.
 
 We use PDFBox from Apache (pdfbox.org) which provides these, but most STM publishers do not use Unicode fonts, and it is formally impossible to identify many character. We use a per-journal lookup which is constructed by expert classification. There is often some difficulty in identifying the pixel images and they may be layered with character codes or paths. We translate characters and paths to SVG which is an excellent intermediate format. We generally keep the images as PNGs as the SVG representation is verbose.
 
@@ -61,17 +57,16 @@ Many segmented objects are suitable for domain-specific interpretation. For exam
 
  1. **Chemical structures** are lines and characters, with occasional circles; we often approach 100% recall/precision for vector or good pixel diagrams. We have successfully converted thousands of molecules, with annotations, and also chemical reactions into Chemical Markup Language (e.g. figure 1a).
  2. **Phylogenetic trees** are often tractable, consisting of a single connected trees with labels close to the tip. We can process both rooted (orthogonal and circular, e.g. figure 1b) and unrooted trees. For simple diagrams precision is often 100%.
- 3. **X-y plots**. These are often very tractable (e.g. figure 1c) - again with high precision; they contain:
-  *  X- and/or Y- axes each consisting of lines with tick marks, scales, quantities and units
-  *  symbols or points, perhaps with error bars and legends for each type
-  *  an overall title
+ 3. **X-y plots**. These are often very tractable (e.g. figure 1c) - again with high precision; they contain: X- and/or Y- axes each consisting of lines with tick marks, scales, quantities and units; symbols or points, perhaps with error bars and legends for each type; and an overall title.
 
 ![**A.)** A photograph of a chemical molecule on a poster taken with a mobile phone camera, showing varying backgrounds, line broadening and skewing. In spite of this it is automatically and accurately converted to a semantic molecule with formula C18 H18 N3 O in under a second. **B.)** This circular tree is separated from its characters and correctly converted to the semantic Newick representation (image from DOI: 10.1371/journal.pone.0036933, figure 1). **C.)** This X-Y plot is correctly decomposed into X and Y coordinates of data points and size of the corresponding error bars (image from DOI: 10.1371/journal.pone.0095565, figure 2). It is possible to create a CSV file directly from this.](./figures/ami-diagram_figure1/ami-diagram_figure1.png)
 
 ## **Current status**
 
-AMI is open source (under the Apache 2 license) and written in pure Java. It can be deployed as a command-line option including recursion over directories and ingestion of web streams. It ingests PDF, SVG, XML, HTML and image formats and usually takes < 1 second per image (some documents include tens of such). It has a plugin architecture using the Visitor pattern so that domain experts can create their own image analysers without having to also write the more basic tools described here. We are actively seeking collaborators.
+AMI is open source under the Apache 2 license at https://bitbucket.org/petermr and written in pure Java. It can be deployed as a command-line option including recursion over directories and ingestion of web streams. It ingests PDF, SVG, XML, HTML and image formats and usually takes < 1 second per image (some documents include tens of such). It has a plugin architecture using the Visitor pattern so that domain experts can create their own image analysers without having to also write the more basic tools described here. We are actively seeking collaborators.
 
 ## **Acknowledgements**
 
 PM-R thanks The Shuttleworth Foundation for a Fellowship and Grant and RM thanks BBSRC for support for the PLUTo project
+
+## **References**

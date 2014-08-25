@@ -8,7 +8,7 @@ all : $(PDFS)
 
 # Accepts PDF target with markdown syntax, makes them using pandoc
 %.pdf : %.md
-		pandoc $< -o $@ --template=shortpaper.latex --filter pandoc-citeproc --csl=acm-sig-proceedings.csl
+		pandoc $< -o $@ --template=shortpaper.latex --filter pandoc-citeproc --csl=acm-sig-proceedings.csl --bibliography=bibliography/biblio.bibtex
 
 clean :
 		rm $(PDFS)
